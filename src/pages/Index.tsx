@@ -30,9 +30,9 @@ const Index = () => {
 
       {/* Social Footer */}
       <SocialFooter
-        twitterUrl="https://twitter.com"
-        linkedinUrl="https://linkedin.com"
-        portfolioUrl="https://example.com"
+        twitterUrl="https://x.com/rakshith_twt"
+        linkedinUrl="https://www.linkedin.com/in/rakshith-m-l-785447244/"
+        portfolioUrl="https://rakshithml.vercel.app/"
       />
     </div>
   );
