@@ -1,73 +1,153 @@
-# Welcome to your Lovable project
+# Transformer Architecture Visualizer
 
-## Project info
+An interactive tool to **visualize how transformers process text**, while comparing the **original 2017 Transformer architecture** with **modern LLM transformer designs**.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+The goal of this project is to help developers, students, and researchers **see how tokens move through a transformer model**.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## Live Demo
 
-**Use Lovable**
+https://attention-amber.vercel.app
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Enter any prompt and watch how it flows through the transformer pipeline.
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+# What This Tool Shows
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+The visualization demonstrates how text moves through the core stages of a transformer.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
+Input Text
+↓
+Tokenization
+↓
+Embedding
+↓
+Positional Encoding
+↓
+Attention
+↓
+Feed Forward
+↓
+Output Probabilities
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Each stage is shown as a block so you can understand how tokens change step by step.
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+# Architecture Comparison
 
-**Edit a file directly in GitHub**
+The interface shows two pipelines side-by-side:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **Classic Transformer (2017)**
+- **Modern LLM Transformer**
 
-**Use GitHub Codespaces**
+This helps visualize how transformer design evolved over time.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+# Classic Transformer (2017)
 
-This project is built with:
+Based on the paper **"Attention Is All You Need"**.
 
-- Vite
-- TypeScript
+### Tokenization
+Breaks text into smaller pieces (tokens) that the model can process.
+
+### Embedding
+Converts each token into a numerical vector representing its meaning.
+
+### Sinusoidal Positional Encoding
+Adds position information so the model knows the order of words.
+
+### Multi-Head Attention
+Allows each token to look at other tokens to understand context.
+
+### Residual Connection
+Keeps the original information while adding new information from the layer.
+
+### LayerNorm (Post-Norm)
+Normalizes activations after each block to stabilize training.
+
+### Feed Forward (ReLU)
+Applies a small neural network to refine each token representation.
+
+---
+
+# Modern LLM Transformer
+
+Used in models like **LLaMA, Mistral, and many modern LLMs**.
+
+### Tokenization
+Same idea: convert text into tokens the model understands.
+
+### Embedding
+Transforms tokens into dense vectors used by the model.
+
+### Rotary Positional Embedding (RoPE)
+Encodes token position by rotating vectors instead of adding sinusoidal signals.
+
+### RMSNorm (Pre-Norm)
+Normalizes inputs before each block to improve training stability.
+
+### Grouped Query Attention (GQA)
+Shares key/value heads across attention groups to reduce memory usage.
+
+### Residual Connection
+Combines new information with the original input to preserve context.
+
+### SwiGLU Feed Forward
+A gated feed-forward network that improves model capacity and stability.
+
+### KV Cache
+Stores previous attention states to make generation faster.
+
+---
+
+# Features
+
+- Visual comparison of **classic vs modern transformer architectures**
+- Interactive **token flow visualization**
+- Minimal interface focused on **understanding model internals**
+- Educational tool for learning transformer mechanics
+
+---
+
+# Tech Stack
+
+Frontend
 - React
-- shadcn-ui
-- Tailwind CSS
+- TypeScript
+- Vite
 
-## How can I deploy this project?
+UI
+- TailwindCSS
+- shadcn/ui
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Deployment
+- Vercel
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+# Why This Project Exists
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Transformers power most modern AI systems, but their internal mechanics are often difficult to understand.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This project makes it easier to **see what happens inside the model** by visualizing each stage of the transformer pipeline.
+
+---
+
+# Future Improvements
+
+- Attention map visualization
+- Step-by-step transformer execution
+- Token probability heatmaps
+- Integration with small real transformer models
+
+---
+
+# License
+
+MIT License
