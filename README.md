@@ -49,60 +49,25 @@ This helps visualize how transformer design evolved over time.
 
 ---
 
-# Classic Transformer (2017)
+## 🏗️ Architecture Variants at a Glance
 
-Based on the paper **"Attention Is All You Need"**.
+A side-by-side breakdown of the original architecture versus what powers today's state-of-the-art models.
 
-### Tokenization
-Breaks text into smaller pieces (tokens) that the model can process.
+<div align="center">
 
-### Embedding
-Converts each token into a numerical vector representing its meaning.
+| Component | 🏛️ Classic Transformer (2017) | 🚀 Modern LLM Transformer |
+| :--- | :--- | :--- |
+| **Origin** | *Based on **"Attention Is All You Need"*** | *Powering **LLaMA, Mistral, & Modern LLMs*** |
+| **Tokenization** | Breaks text into smaller pieces (tokens). | Same idea: convert text into tokens. |
+| **Embedding** | Converts tokens into numerical vectors. | Transforms tokens into dense vectors. |
+| **Positional Encoding** | **Sinusoidal Positional Encoding**<br>Adds position info so the model knows word order. | **Rotary Positional Embedding (RoPE)**<br>Encodes position by rotating vectors. |
+| **Normalization** | **LayerNorm (Post-Norm)**<br>Normalizes activations *after* each block. | **RMSNorm (Pre-Norm)**<br>Normalizes inputs *before* each block for stability. |
+| **Attention Mechanism**| **Multi-Head Attention**<br>Each token looks at other tokens for context. | **Grouped Query Attention (GQA)**<br>Shares key/value heads to save memory. |
+| **Feed Forward** | **ReLU Feed Forward**<br>A small neural network refines each token. | **SwiGLU Feed Forward**<br>Gated network for better capacity & stability. |
+| **Residual Connections**| Keeps original info while adding new info. | Combines new info with original input. |
+| **Generation Speedup** | *(Standard Decoding)* | **KV Cache**<br>Stores attention states for faster generation. |
 
-### Sinusoidal Positional Encoding
-Adds position information so the model knows the order of words.
-
-### Multi-Head Attention
-Allows each token to look at other tokens to understand context.
-
-### Residual Connection
-Keeps the original information while adding new information from the layer.
-
-### LayerNorm (Post-Norm)
-Normalizes activations after each block to stabilize training.
-
-### Feed Forward (ReLU)
-Applies a small neural network to refine each token representation.
-
----
-
-# Modern LLM Transformer
-
-Used in models like **LLaMA, Mistral, and many modern LLMs**.
-
-### Tokenization
-Same idea: convert text into tokens the model understands.
-
-### Embedding
-Transforms tokens into dense vectors used by the model.
-
-### Rotary Positional Embedding (RoPE)
-Encodes token position by rotating vectors instead of adding sinusoidal signals.
-
-### RMSNorm (Pre-Norm)
-Normalizes inputs before each block to improve training stability.
-
-### Grouped Query Attention (GQA)
-Shares key/value heads across attention groups to reduce memory usage.
-
-### Residual Connection
-Combines new information with the original input to preserve context.
-
-### SwiGLU Feed Forward
-A gated feed-forward network that improves model capacity and stability.
-
-### KV Cache
-Stores previous attention states to make generation faster.
+</div>
 
 ---
 
